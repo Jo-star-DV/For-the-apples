@@ -1,5 +1,5 @@
 const parts = [
-  { src: "teil1.mp4", questions: [
+  { src: "https://www.youtube.com/watch?v=AIjtNbYUo4I", questions: [
       { text: "Wen besucht Felix?", answers: [
           { text: "Gallener Gurkenschmiede", correct: false },
           { text: "Stahringer Streuobstmosterei", correct: true }
@@ -14,7 +14,7 @@ const parts = [
           { text: "Profi Schwimmer", correct: false }
         ]},
     ]},
-  { src: "teil2.mp4", questions: [
+  { src: "https://www.youtube.com/watch?v=AIjtNbYUo4I", questions: [
       { text: "Wie ist die Pflege von Streuobst?", answers: [
           { text: "Intensiv", correct: false },
           { text: "Minimal", correct: true }
@@ -34,7 +34,7 @@ const parts = [
           { text: "3784", correct: false }
         ]}
     ]},
-  { src: "teil3.mp4", questions: [
+  { src: "https://www.youtube.com/watch?v=AIjtNbYUo4I", questions: [
       { text: "Wie heißt der Hof, den Felix besucht?", answers: [
           { text: "Fuchshof", correct: true },
           { text: "Lurchhof", correct: false },
@@ -51,7 +51,7 @@ const parts = [
           { text: "Den Äpfeln klassische Musik vorzuspielen", correct: false }
         ]}
     ]},
-  { src: "teil4.mp4", questions: [
+  { src: "https://www.youtube.com/watch?v=AIjtNbYUo4I", questions: [
       { text: "Was ist beim Bio-Anbau besonders?", answers: [
           { text: "Es wird auf chemisch-synthetische Düngemittel verzichtet", correct: true },
           { text: "Die Apfelbäume werden nur mit destilliertem Wasser gegossen", correct: false },
