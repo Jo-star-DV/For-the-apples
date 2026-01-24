@@ -1,6 +1,6 @@
 const parts = [
   { questions: [
-      { text: "Wen besucht Felix?", answers: [
+      { text: "Wen besucht Felix als erstes?", answers: [
           { text: "Gallener Gurkenschmiede", correct: false },
           { text: "Stahringer Streuobstmosterei", correct: true }
         ]},
@@ -20,8 +20,8 @@ const parts = [
           { text: "Minimal", correct: true }
         ]},
       { text: "Was wird zweimal jährlich gemacht?", answers: [
-          { text: "Das Gras wird gemäht", correct: false },
-          { text: "Ein Sonnentanz wird aufgeführt", correct: true }
+          { text: "Das Gras wird gemäht", correct: true },
+          { text: "Ein Sonnentanz wird aufgeführt", correct: false }
         ]},
       { text: "Wie stehen die Bäume auf einer Streuobstwiese?", answers: [
           { text: "Verteilt mit großem Abstand", correct: true },
@@ -45,7 +45,7 @@ const parts = [
           { text: "Die Nachbarn haben es ihnen verboten", correct: false },
           { text: "Sie sind wirtschaftlich unrentabel", correct: true }
         ]},
-      { text: "Was ist beim langen Lagern zu beachten?", answers: [
+      { text: "Was ist beim langen Lagern hilfreich?", answers: [
           { text: "Die Äpfel wöchentlich zu waschen", correct: false },
           { text: "Den Sauerstoff-Gehalt in der Luft zu senken", correct: true },
           { text: "Den Äpfeln klassische Musik vorzuspielen", correct: false }
@@ -130,6 +130,10 @@ function showResult() {
   `;
   feedback.textContent = "";
   progressFill.style.width = "100%";
+  
+  if (score === totalQuestions) {
+    quizDiv.innerHTML += "<p>🎉🎉🎊🎉🎉</p>";
+  }
 }
 
 showQuestion();
