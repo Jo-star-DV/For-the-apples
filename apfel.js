@@ -52,18 +52,28 @@ const parts = [
         ]}
     ]},
   { questions: [
+      { text: "Wie ist in Deutschland etwa die Nachfrage nach Bio-Äpfeln?", answers: [
+          { text: "20%", correct: false },
+          { text: "15%", correct: true},
+          { text: "10%", correct: false }
+        ]},
       { text: "Was ist beim Bio-Anbau besonders?", answers: [
           { text: "Es wird auf chemisch-synthetische Düngemittel verzichtet", correct: true },
           { text: "Die Apfelbäume werden nur mit destilliertem Wasser gegossen", correct: false },
           { text: "Die Gewinnmage wird bewusst höher gesetzt", correct: false }
         ]},
-      { text: "Warum ist die ökologische Einordnung schwierig?", answers: [
+      { text: "Warum ist die ökologische Einordnung der Anbauarten schwierig?", answers: [
           { text: "Weil sich die Tiere oft verstecken", correct: false },
           { text: "Weil niemand eine Ahnung hat, wie man rechnen soll", correct: false },
           { text: "Weil für den gleichen Ertrag in den versch. Anbauformen mehr Fläche benötigt wird", correct: true }
+        ]},
+      { text: "Warum sind Streuobswiesen erhaltenswert?", answers: [
+          { text: "Weil sie ein Kulturgut sind und zur Artenfielfalt beitragen", correct: true },
+          { text: "Weil Günther sie schön findet", correct: false },
+          { text: "Da sie beim Betrachten Sozialkompetenzen trainieren", correct: false }
         ]}
     ]}
-];
+ ];
 
 let currentPart = 0;
 let currentQuestion = 0;
