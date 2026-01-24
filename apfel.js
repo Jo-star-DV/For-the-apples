@@ -138,3 +138,5 @@ function showResult() {
 
 showQuestion();
 updateProgress();
+
+//Das hat seeeeeehr lange gedauert xD
