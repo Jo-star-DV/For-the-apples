@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streuobst - Quiz</title>
+  <link rel="stylesheet" href="apfel.css">
+</head>
+<body>
+
+<header>
+  <h1>Streuobst - Der bessere Apfel?</h1>
+  <p class="links">
+    <a href="index.html">Film</a> •
+    <a href="quiz.html">Quiz</a>
+  </p>
+</header>
+
+<main>
+  <section class="card">
+
+    <div class="progress-box">
+      <div class="progress-text">
+        Teil <span id="step">1</span> von <span id="totalParts">4</span> •
+        Punkte: <span id="points">0</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <video id="video" controls playsinline></video>
+    </div>
+
+    <div id="quiz"></div>
+    <p id="feedback"></p>
+
+  </section>
+</main>
+
+<script src="apfel.js"></script>
+
+</body>
+</html>

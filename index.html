@@ -3,52 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streuobstwiese – Doku & Quiz</title>
+  <title>Streuobst - Doku</title>
   <link rel="stylesheet" href="apfel.css" />
 </head>
+
 <body>
 
 <header>
   <h1>Streuobst - Der bessere Apfel?</h1>
-  <p>Lernen • Entdecken • Quiz</p>
+  <p class="links">
+    <a href="index.html">Film</a> •
+    <a href="quiz.html">Quiz</a>
+  </p>
 </header>
 
-<main>
-  <section class="card">
-    <h2>!! Dies ist eine Testwebsite!!</h2>
-    <div class="videos">
-      <video controls>
-        <source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLbpi6ZahtOH4SVczoTshjP05vUsysmMCz&index=1" type="video/mp4">
-      </video>
-    </div> </section><section class="card">
-    <h2>📖 Doku</h2>
-  </section><section class="card"> 
-    <h2>Quiz</h2><form id="quiz">
-      
-      <p>1. Was ist eine Streuobstwiese?</p>
-      <label><input type="radio" name="q1" value="a"> Obstplantage</label>
-      <label><input type="radio" name="q1" value="b"> Wiese mit Obstbäumen</label>
-      
-      <p>2. Welche Frucht wächst dort meist?</p> <label><input type="radio" name="q2" value="a"> Banane</label>
-      <label><input type="radio" name="q2" value="b"> Apfel</label><p>3. Wie wird sie typischerweise gepflegt?</p>
-      <label><input type="radio" name="q3" value="a"> Sehr intensiv</label>
-      <label><input type="radio" name="q3" value="b"> Naturfreundlich</label>   
-      
-      <p>4. Was wird dadurch gefördert?</p>
-      <label><input type="radio" name="q4" value="a"> Artenvielfalt</label>
-      <label><input type="radio" name="q4" value="b"> Straßenbau</label>
+  <main>
+    <section class="card">
+      <h2>Doku: Streuobst - der bessere Apfel?</h2>
+      <div class="wrapper">
+        <video controls playsinline>
+          <source src="streuobst.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+  </main>
 
-      <p>5. Wie sind die Bäume?</p>
-      <label><input type="radio" name="q5" value="a"> Hochstämmig</label>
-      <label><input type="radio" name="q5" value="b"> Sehr klein</label>
-
-      <button type="button" onclick="checkQuiz()">Quiz auswerten</button>
-      <p id="result"></p>
-    </form>
-  </section>
-
-</main>
-
-<script src="apfel.js"></script>
 </body>
 </html>
