@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: #00c94394 rgba(8, 223, 8, 0.479);
 }
 
 body {
@@ -77,6 +78,7 @@ button:hover {
   border-radius: 18px;
   background: black;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .wrapper iframe {

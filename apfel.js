@@ -1,5 +1,5 @@
 const parts = [
-  { src: "https://www.youtube.com/watch?v=AIjtNbYUo4I", questions: [
+  { src: "https://www.youtube.com/embed/AIjtNbYUo4I", questions: [
       { text: "Wen besucht Felix?", answers: [
           { text: "Gallener Gurkenschmiede", correct: false },
           { text: "Stahringer Streuobstmosterei", correct: true }
@@ -12,9 +12,9 @@ const parts = [
           { text: "Besitzer", correct: false },
           { text: "Lohnmoster", correct: true },
           { text: "Profi Schwimmer", correct: false }
-        ]},
+        ]}
     ]},
-  { src: "https://www.youtube.com/watch?v=AIjtNbYUo4I", questions: [
+  { src: "https://www.youtube.com/embed/AIjtNbYUo4I", questions: [
       { text: "Wie ist die Pflege von Streuobst?", answers: [
           { text: "Intensiv", correct: false },
           { text: "Minimal", correct: true }
@@ -34,7 +34,7 @@ const parts = [
           { text: "3784", correct: false }
         ]}
     ]},
-  { src: "https://www.youtube.com/watch?v=AIjtNbYUo4I", questions: [
+  { src: "https://www.youtube.com/embed/AIjtNbYUo4I", questions: [
       { text: "Wie heißt der Hof, den Felix besucht?", answers: [
           { text: "Fuchshof", correct: true },
           { text: "Lurchhof", correct: false },
@@ -51,7 +51,7 @@ const parts = [
           { text: "Den Äpfeln klassische Musik vorzuspielen", correct: false }
         ]}
     ]},
-  { src: "https://www.youtube.com/watch?v=AIjtNbYUo4I", questions: [
+  { src: "https://www.youtube.com/embed/AIjtNbYUo4I", questions: [
       { text: "Was ist beim Bio-Anbau besonders?", answers: [
           { text: "Es wird auf chemisch-synthetische Düngemittel verzichtet", correct: true },
           { text: "Die Apfelbäume werden nur mit destilliertem Wasser gegossen", correct: false },
@@ -69,20 +69,21 @@ let currentPart = 0;
 let currentQuestion = 0;
 let score = 0;
 
+let totalQuestions = parts.reduce((sum, part) => sum + part.questions.length, 0);
+let answeredQuestions = 0;
+
 const video = document.getElementById("video");
 const quizDiv = document.getElementById("quiz");
 const feedback = document.getElementById("feedback");
 const stepSpan = document.getElementById("step");
 const pointsSpan = document.getElementById("points");
 const progressFill = document.getElementById("progressFill");
+const nextBtn = document.getElementById("nextBtn");
 document.getElementById("totalParts").textContent = parts.length;
 
-video.onended = () => {
+nextBtn.addEventListener("click", () => {
   showQuestion();
-};
-
-loadPart();
-updateProgress();
+});
 
 function loadPart() {
   quizDiv.innerHTML = "";
@@ -90,17 +91,18 @@ function loadPart() {
   currentQuestion = 0;
 
   video.style.display = "block";
+  nextBtn.style.display = "inline-block";
   video.src = parts[currentPart].src;
-  video.load();
+  updateProgress();
 }
 
 function showQuestion() {
   const q = parts[currentPart].questions[currentQuestion];
   if (!q) return;
-
+  video.src = ""; 
   video.style.display = "none";
+  nextBtn.style.display = "none";
   quizDiv.innerHTML = `<p><strong>${q.text}</strong></p>`;
-
   q.answers.forEach(a => {
     const btn = document.createElement("button");
     btn.textContent = a.text;
@@ -110,41 +112,49 @@ function showQuestion() {
 }
 
 function nextQuestion(correct) {
+  answeredQuestions++;
+
   if (correct) {
     score++;
     feedback.textContent = "Richtig!";
   } else {
     feedback.textContent = "Falsch!";
   }
-
   pointsSpan.textContent = score;
+  updateProgress();
+
   currentQuestion++;
 
-  if (currentQuestion < parts[currentPart].questions.length) {
-    setTimeout(showQuestion, 700);
-  } else {
-    currentPart++;
-    updateProgress();
-
-    if (currentPart < parts.length) {
-      setTimeout(loadPart, 1000);
+  setTimeout(() => {
+    feedback.textContent = "";
+    if (currentQuestion < parts[currentPart].questions.length) {
+      showQuestion();
     } else {
-      showResult();
+      currentPart++;
+      if (currentPart < parts.length) {
+        loadPart();
+      } else {
+        showResult();
+      }
     }
-  }
+  }, 1000);
 }
 
 function updateProgress() {
+  let progressPercent = (answeredQuestions / totalQuestions) * 100;
+  progressFill.style.width = progressPercent + "%";
   stepSpan.textContent = Math.min(currentPart + 1, parts.length);
-  progressFill.style.width = (currentPart / parts.length) * 100 + "%";
 }
 
 function showResult() {
   video.style.display = "none";
+  nextBtn.style.display = "none";
   progressFill.style.width = "100%";
   quizDiv.innerHTML = `
     <h2>🎉 Herzlichen Glückwunsch!</h2>
-    <p>Du hast <strong>${score}</strong> von 12 Punkten erreicht.</p>
+    <p>Du hast <strong>${score}</strong> von ${totalQuestions} Punkten erreicht.</p>
   `;
   feedback.textContent = "";
 }
+
+loadPart();
