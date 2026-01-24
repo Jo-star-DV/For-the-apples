@@ -1,5 +1,5 @@
 const parts = [
-  { src: "https://www.youtube.com/embed/AIjtNbYUo4I", questions: [
+  { questions: [
       { text: "Wen besucht Felix?", answers: [
           { text: "Gallener Gurkenschmiede", correct: false },
           { text: "Stahringer Streuobstmosterei", correct: true }
@@ -14,7 +14,7 @@ const parts = [
           { text: "Profi Schwimmer", correct: false }
         ]}
     ]},
-  { src: "https://www.youtube.com/embed/AIjtNbYUo4I", questions: [
+  { questions: [
       { text: "Wie ist die Pflege von Streuobst?", answers: [
           { text: "Intensiv", correct: false },
           { text: "Minimal", correct: true }
@@ -34,7 +34,7 @@ const parts = [
           { text: "3784", correct: false }
         ]}
     ]},
-  { src: "https://www.youtube.com/embed/AIjtNbYUo4I", questions: [
+  { questions: [
       { text: "Wie heißt der Hof, den Felix besucht?", answers: [
           { text: "Fuchshof", correct: true },
           { text: "Lurchhof", correct: false },
@@ -51,7 +51,7 @@ const parts = [
           { text: "Den Äpfeln klassische Musik vorzuspielen", correct: false }
         ]}
     ]},
-  { src: "https://www.youtube.com/embed/AIjtNbYUo4I", questions: [
+  { questions: [
       { text: "Was ist beim Bio-Anbau besonders?", answers: [
           { text: "Es wird auf chemisch-synthetische Düngemittel verzichtet", correct: true },
           { text: "Die Apfelbäume werden nur mit destilliertem Wasser gegossen", correct: false },
@@ -72,36 +72,16 @@ let score = 0;
 let totalQuestions = parts.reduce((sum, part) => sum + part.questions.length, 0);
 let answeredQuestions = 0;
 
-const video = document.getElementById("video");
 const quizDiv = document.getElementById("quiz");
 const feedback = document.getElementById("feedback");
 const stepSpan = document.getElementById("step");
 const pointsSpan = document.getElementById("points");
 const progressFill = document.getElementById("progressFill");
-const nextBtn = document.getElementById("nextBtn");
-document.getElementById("totalParts").textContent = parts.length;
-
-nextBtn.addEventListener("click", () => {
-  showQuestion();
-});
-
-function loadPart() {
-  quizDiv.innerHTML = "";
-  feedback.textContent = "";
-  currentQuestion = 0;
-
-  video.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  video.src = parts[currentPart].src;
-  updateProgress();
-}
 
 function showQuestion() {
   const q = parts[currentPart].questions[currentQuestion];
   if (!q) return;
-  video.src = ""; 
-  video.style.display = "none";
-  nextBtn.style.display = "none";
+
   quizDiv.innerHTML = `<p><strong>${q.text}</strong></p>`;
   q.answers.forEach(a => {
     const btn = document.createElement("button");
@@ -113,14 +93,10 @@ function showQuestion() {
 
 function nextQuestion(correct) {
   answeredQuestions++;
-
-  if (correct) {
-    score++;
-    feedback.textContent = "Richtig!";
-  } else {
-    feedback.textContent = "Falsch!";
-  }
+  if (correct) score++;
   pointsSpan.textContent = score;
+
+  feedback.textContent = correct ? "Richtig!" : "Falsch!";
   updateProgress();
 
   currentQuestion++;
@@ -132,12 +108,13 @@ function nextQuestion(correct) {
     } else {
       currentPart++;
       if (currentPart < parts.length) {
-        loadPart();
+        currentQuestion = 0;
+        showQuestion();
       } else {
         showResult();
       }
     }
-  }, 1000);
+  }, 700);
 }
 
 function updateProgress() {
@@ -147,14 +124,13 @@ function updateProgress() {
 }
 
 function showResult() {
-  video.style.display = "none";
-  nextBtn.style.display = "none";
-  progressFill.style.width = "100%";
   quizDiv.innerHTML = `
     <h2>🎉 Herzlichen Glückwunsch!</h2>
     <p>Du hast <strong>${score}</strong> von ${totalQuestions} Punkten erreicht.</p>
   `;
   feedback.textContent = "";
+  progressFill.style.width = "100%";
 }
 
-loadPart();
+showQuestion();
+updateProgress();

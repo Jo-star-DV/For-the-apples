@@ -2,13 +2,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #00c94394 rgba(8, 223, 8, 0.479);
 }
 
 body {
   font-family: system-ui, sans-serif;
   background-color: #f3fbf7;
   color: #1f2d26;
+  background: linear-gradient(135deg, #bbfa8054, #c1ff7079);
   line-height: 1.6;
 }
 
@@ -17,6 +17,7 @@ header {
   color: white;
   text-align: center;
   padding: 1.5rem 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.103);
 }
 
 header h1 {
@@ -46,7 +47,7 @@ main {
   border-radius: 22px;
   padding: 2rem;
   box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-  max-width: 900px;
+  width: 70%;
   margin: 0 auto;
   text-align: center;
 }
@@ -84,7 +85,7 @@ button:hover {
 .wrapper iframe {
   display: block;
   width: 100%;
-  max-height: 60vh;
+  height: auto;
   object-fit: contain;
   border-radius: 12px;
   aspect-ratio: 16/9;
