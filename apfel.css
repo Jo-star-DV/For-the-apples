@@ -39,12 +39,10 @@ header .links a {
   color: white;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.25s ease, transform 0.15s ease;
 }
 
 header .links a:hover {
   background: rgba(255,255,255,0.4);
-  transform: translateY(-1px);
 }
 
 main {
