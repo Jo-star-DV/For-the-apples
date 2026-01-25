@@ -33,12 +33,14 @@ header .links {
 }
 
 header .links a {
+  text-align: center;
   padding: 0.5rem 1.2rem;
   border-radius: 999px;
   background: rgba(255,255,255,0.25);
   color: white;
   font-weight: 600;
   text-decoration: none;
+  min-width: 120px;
 }
 
 header .links a:hover {
@@ -161,7 +163,13 @@ button:hover {
   header h1 {
     font-size: 1.5rem;
   }
-
+  
+  header .links a {
+    min-width: 100px;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.95rem;
+  }
+  
   main {
     padding: 1rem;
     gap: 1rem;
